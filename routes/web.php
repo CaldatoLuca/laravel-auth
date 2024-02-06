@@ -19,7 +19,13 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
+//raggruppo le rotte, le faccio controllare da un middleware e ne cambio il nome e prefisso
+//name->il nome delle rotte inizia con admin.
+//prefix-> tutti gli url della pagina di queste rotte avranno  come prefisso /admin, aiuto l' utente
+Route::middleware(['auth', 'verified'])->name('admin.')->prefix('admin')->group(function () {
+    //rotta dashboard gestita da controller mio
+    Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
+});
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
