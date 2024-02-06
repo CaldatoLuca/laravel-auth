@@ -12,6 +12,7 @@
                 <th scope="col">Title</th>
                 <th scope="col">Slug</th>
                 <th scope="col"></th>
+                <th scope="col"></th>
             </tr>
         </thead>
         <tbody>
@@ -20,6 +21,7 @@
                     <td>{{ $project->title }}</td>
                     <td>{{ $project->slug }}</td>
                     <td><a href="{{ route('admin.projects.show', $project->id) }}">View Details</a></td>
+                    <td><a href="{{ route('admin.projects.edit', $project->id) }}">Edit</a></td>
                 </tr>
             @endforeach
         </tbody>
