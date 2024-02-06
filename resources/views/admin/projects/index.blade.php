@@ -13,6 +13,7 @@
                 <th scope="col">Slug</th>
                 <th scope="col"></th>
                 <th scope="col"></th>
+                <th scope="col"></th>
             </tr>
         </thead>
         <tbody>
@@ -22,6 +23,17 @@
                     <td>{{ $project->slug }}</td>
                     <td><a href="{{ route('admin.projects.show', $project->id) }}">View Details</a></td>
                     <td><a href="{{ route('admin.projects.edit', $project->id) }}">Edit</a></td>
+                    <td>
+                        <form action="{{ route('admin.projects.destroy', $project->id) }}" method="POST">
+                            @csrf
+
+                            {{-- aggiungo il metodo delete --}}
+                            @method('DELETE')
+
+                            <button type="submit" class="btn btn-danger"
+                                onclick="return confirm('Are you sure you want to delete?')">Delete</button>
+                        </form>
+                    </td>
                 </tr>
             @endforeach
         </tbody>
