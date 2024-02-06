@@ -1,11 +1,17 @@
 @extends('layouts.admin')
 
-@section('content')
-    <h1>Lista dei progetti</h1>
+@section('title')
+    Your Projects
+@endsection
 
-    <ul>
-        @foreach ($projects as $project)
-            <li>{{ $project->title }}</li>
-        @endforeach
-    </ul>
+@section('content')
+    <div class="container">
+        <h1 class="mb-5">Lista dei progetti</h1>
+
+        <ul class="list-group">
+            @foreach ($projects as $project)
+                <li class="list-group-item">{{ $project->title }}</li>
+            @endforeach
+        </ul>
+    </div>
 @endsection
