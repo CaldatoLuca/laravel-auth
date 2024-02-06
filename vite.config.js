@@ -7,15 +7,12 @@ export default defineConfig({
         laravel({
             input: ["resources/css/app.css", "resources/js/app.js"],
             refresh: true,
-            resolve: {
-                alias: {
-                    "~resources": "/resources/",
-                    "~bootstrap": path.resolve(
-                        __dirname,
-                        "node_modules/bootstrap"
-                    ),
-                },
-            },
         }),
     ],
+    resolve: {
+        alias: {
+            "~resources": "/resources/",
+            "~bootstrap": path.resolve(__dirname, "node_modules/bootstrap"),
+        },
+    },
 });
