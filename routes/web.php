@@ -24,7 +24,7 @@ Route::get('/', function () {
 //prefix-> tutti gli url della pagina di queste rotte avranno  come prefisso /admin, aiuto l' utente
 Route::middleware(['auth', 'verified'])->name('admin.')->prefix('admin')->group(function () {
     //rotta dashboard gestita da controller mio
-    Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
+    Route::get('/', [DashboardController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
 });
 
 Route::middleware('auth')->group(function () {
