@@ -5,13 +5,23 @@
 @endsection
 
 @section('content')
-    <div class="container">
-        <h1 class="mb-5">Lista dei progetti</h1>
-
-        <ul class="list-group">
+    <h2>Your project list</h2>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Title</th>
+                <th scope="col">Slug</th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
             @foreach ($projects as $project)
-                <li class="list-group-item">{{ $project->title }}</li>
+                <tr>
+                    <td>{{ $project->title }}</td>
+                    <td>{{ $project->slug }}</td>
+                    <td><a href="{{ route('admin.projects.show', $project->id) }}">View Details</a></td>
+                </tr>
             @endforeach
-        </ul>
-    </div>
+        </tbody>
+    </table>
 @endsection

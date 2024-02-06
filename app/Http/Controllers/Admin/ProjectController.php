@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Project;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
+
 
 class ProjectController extends Controller
 {
@@ -35,6 +37,7 @@ class ProjectController extends Controller
 
         $project = new Project();
         $project->fill($data);
+        $project->slug = Str::of($project->title)->slug('-');
         $project->save();
 
         return redirect()->route('admin.projects.index');
@@ -43,9 +46,9 @@ class ProjectController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Project $project)
     {
-        //
+        return view('admin.projects.show', compact('project'));
     }
 
     /**
