@@ -18,7 +18,7 @@
             </div>
             <div class="col-6 d-flex justify-content-center align-items-center">
 
-                <div class="image rounded-3 overflow-hidden">
+                <div id="image-show" class="rounded-3 overflow-hidden">
                     <img src="{{ $project->thumb }}" alt="{{ $project->title }}" class="img-fluid">
                 </div>
 

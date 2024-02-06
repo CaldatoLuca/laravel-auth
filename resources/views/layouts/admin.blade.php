@@ -26,7 +26,7 @@
 <body>
     <div id="app">
 
-        <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-2 shadow">
+        <header id="admin-header" class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-2 shadow">
             <div class="row justify-content-between ">
                 <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="/">Portfolio</a>
                 <button class="navbar-toggler position-absolute d-md-none collapsed" type="button"
@@ -49,12 +49,13 @@
             </div>
         </header>
 
-        <div class="container-fluid vh-100">
+        <div class="container-fluid">
             <div class="row h-100">
                 <!-- Definire solo parte del menu di navigazione inizialmente per poi
         aggiungere i link necessari giorno per giorno
         -->
-                <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-dark navbar-dark sidebar collapse">
+                <nav id="sidebarMenu"
+                    class="col-md-3 col-lg-2 d-md-block bg-dark navbar-dark sidebar collapse position-fixed ">
                     <div class="position-sticky pt-3">
                         <ul class="nav flex-column">
                             <li class="nav-item">

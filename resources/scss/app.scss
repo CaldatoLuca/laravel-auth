@@ -1,6 +1,12 @@
 @import "~bootstrap/scss/bootstrap";
 
-.image {
+#image-show {
     width: 70%;
     height: 800px;
+}
+#admin-header {
+    height: 60px;
+}
+#sidebarMenu {
+    height: calc(100vh - 60px);
 }
