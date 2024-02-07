@@ -21,7 +21,7 @@
         @endif
 
 
-        <form action="{{ route('admin.projects.update', $project->id) }}" method="POST" class="h-100">
+        <form action="{{ route('admin.projects.update', $project) }}" method="POST" class="h-100">
 
             {{-- token di laravel per controllo --}}
             @csrf

@@ -21,10 +21,10 @@
                 <tr>
                     <td>{{ $project->title }}</td>
                     <td>{{ $project->slug }}</td>
-                    <td><a href="{{ route('admin.projects.show', $project->id) }}">View Details</a></td>
-                    <td><a href="{{ route('admin.projects.edit', $project->id) }}">Edit</a></td>
+                    <td><a href="{{ route('admin.projects.show', $project) }}">View Details</a></td>
+                    <td><a href="{{ route('admin.projects.edit', $project) }}">Edit</a></td>
                     <td>
-                        <form action="{{ route('admin.projects.destroy', $project->id) }}" method="POST">
+                        <form action="{{ route('admin.projects.destroy', $project) }}" method="POST">
                             @csrf
 
                             {{-- aggiungo il metodo delete --}}

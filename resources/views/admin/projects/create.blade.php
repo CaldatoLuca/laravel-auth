@@ -6,7 +6,7 @@
 
 @section('content')
     <div class="container">
-        <h1 class="mb-5">Inserisci un nuovo progetto</h1>
+        <h1 class="mb-5">New Project</h1>
 
         {{-- errori --}}
         @if ($errors->any())
@@ -61,7 +61,7 @@
 
             {{-- descrizione --}}
             <div class="mb-3">
-                <label for="project-description" class="form-label">project Description</label>
+                <label for="project-description" class="form-label">Project Description</label>
                 <div class="input-group">
                     {{-- input --}}
                     <textarea class="form-control @error('description') is-invalid @enderror" cols="30" rows="10"
