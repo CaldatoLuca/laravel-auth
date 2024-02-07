@@ -9,16 +9,7 @@
         <h2>Modifica: {{ $project->title }}</h2>
 
         {{-- errori --}}
-        @if ($errors->any())
-            <h3 class="text-danger">Something went wrong</h3>
-            <div class="alert alert-danger">
-                <ul class="list-group mb-0 ">
-                    @foreach ($errors->all() as $error)
-                        <li class="list-group-item bg-danger-subtle border-0">{{ $error }}</li>
-                    @endforeach
-                </ul>
-            </div>
-        @endif
+        @include('partials.errors')
 
 
         <form action="{{ route('admin.projects.update', $project) }}" method="POST" class="h-100">

@@ -42,7 +42,7 @@ class ProjectController extends Controller
         $project->slug = Str::of($project->title)->slug('-');
         $project->save();
 
-        return redirect()->route('admin.projects.index')->with('message_create', "Project $project->title creato correttamente");
+        return redirect()->route('admin.projects.index')->with('message_create', "Project '$project->title' created");
     }
 
     /**
@@ -70,7 +70,9 @@ class ProjectController extends Controller
 
         $project->update($data);
 
-        return redirect()->route('admin.projects.show', $project);
+        $name = $project->title;
+
+        return redirect()->route('admin.projects.show', $project)->with('message_update', "Project '$name' modified");;
     }
 
     /**
@@ -81,6 +83,6 @@ class ProjectController extends Controller
         $name = $project->title;
         $project->delete();
 
-        return redirect()->route('admin.projects.index')->with('message_delete', "Project $name eliminato correttamente");;
+        return redirect()->route('admin.projects.index')->with('message_delete', "Project '$name' eliminated");
     }
 }

@@ -26,7 +26,8 @@
 <body>
     <div id="app">
 
-        <header id="admin-header" class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-2 shadow">
+        {{-- header --}}
+        <header id="admin-header" class="navbar navbar-dark sticky-top flex-md-nowrap p-2 shadow">
             <div class="row justify-content-between ">
                 <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="/">Portfolio</a>
                 <button class="navbar-toggler position-absolute d-md-none collapsed" type="button"
@@ -49,48 +50,98 @@
             </div>
         </header>
 
+        {{-- container sidebar e main --}}
         <div class="container-fluid">
             <div class="row h-100">
-                <!-- Definire solo parte del menu di navigazione inizialmente per poi
-        aggiungere i link necessari giorno per giorno
-        -->
-                <nav id="sidebarMenu"
-                    class="col-md-3 col-lg-2 d-md-block bg-dark navbar-dark sidebar collapse position-fixed ">
+                {{-- sidebar --}}
+                <nav id="sidebar-menu" class="col-md-3 col-lg-2 d-md-block navbar-dark sidebar collapse">
                     <div class="position-sticky pt-3">
                         <ul class="nav flex-column">
                             {{-- dashboard --}}
-                            <li class="nav-item">
-                                <a class="nav-link text-white {{ Route::currentRouteName() == 'dashboard' ? 'bg-secondary' : '' }}"
+                            <li class="nav-item rounded-1 overflow-hidden">
+                                <a class="nav-link {{ Route::currentRouteName() == 'admin.dashboard' ? 'link-selected' : '' }}"
                                     href="{{ route('admin.dashboard') }}">
                                     <i class="fa-solid fa-tachometer-alt fa-lg fa-fw"></i> Dashboard
                                 </a>
                             </li>
 
                             {{-- project list --}}
-                            <li class="nav-item">
-                                <a class="nav-link text-white {{ Route::currentRouteName() == 'dashboard' ? 'bg-secondary' : '' }}"
+                            <li class="nav-item rounded-1 overflow-hidden">
+                                <a class="nav-link {{ Route::currentRouteName() == 'admin.projects.index' ? 'link-selected' : '' }}"
                                     href="{{ route('admin.projects.index') }}">
                                     <i class="fa-solid fa-folder fa-lg fa-fw"></i> Project List
                                 </a>
                             </li>
 
                             {{-- create project --}}
-                            <li class="nav-item">
-                                <a class="nav-link text-white {{ Route::currentRouteName() == 'dashboard' ? 'bg-secondary' : '' }}"
+                            <li class="nav-item rounded-1 overflow-hidden">
+                                <a class="nav-link {{ Route::currentRouteName() == 'admin.projects.create' ? 'link-selected' : '' }}"
                                     href="{{ route('admin.projects.create') }}">
                                     <i class="fa-solid fa-plus fa-lg fa-fw"></i> New Project
                                 </a>
                             </li>
                         </ul>
                     </div>
+
                 </nav>
 
+                {{-- main --}}
                 <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 pt-3">
                     @yield('content')
                 </main>
             </div>
         </div>
 
+        {{-- notifications --}}
+        <div class="notification">
+            {{-- avviso creazione project --}}
+            @if (session('message_create'))
+                <div class="toast align-items-center border-0 fade show" role="alert" aria-live="assertive"
+                    aria-atomic="true">
+                    <div class="d-flex">
+                        <div class="toast-body">
+                            {{ session('message_create') }}
+                        </div>
+                        <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"
+                            aria-label="Close"></button>
+                    </div>
+                </div>
+            @endif
+
+            {{-- avviso cancellazione project --}}
+            @if (session('message_delete'))
+                <div class="toast align-items-center border-0 fade show" role="alert" aria-live="assertive"
+                    aria-atomic="true">
+                    <div class="d-flex">
+                        <div class="toast-body">
+                            {{ session('message_delete') }}
+                        </div>
+
+                        <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"
+                            aria-label="Close"></button>
+                    </div>
+                </div>
+            @endif
+
+            {{-- avviso modifica project --}}
+            @if (session('message_update'))
+                <div class="toast align-items-center border-0 fade show" role="alert" aria-live="assertive"
+                    aria-atomic="true">
+                    <div class="d-flex">
+                        <div class="toast-body">
+                            {{ session('message_update') }}
+                        </div>
+                        <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"
+                            aria-label="Close"></button>
+                    </div>
+                </div>
+            @endif
+        </div>
+
+        {{-- scroll up button --}}
+        <button type="button" class="btn btn-danger btn-floating btn-lg" id="btn-back-to-top">
+            <i class="fas fa-arrow-up"></i>
+        </button>
     </div>
 </body>
 
