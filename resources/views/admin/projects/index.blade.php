@@ -9,17 +9,29 @@
 
     {{-- avviso creazione project --}}
     @if (session('message_create'))
-        <div class="alert alert-success">
-            {{ session('message_create') }}
-            <button type="button" class="btn-close" aria-label="Close"></button>
+        <div class="toast align-items-center text-bg-success border-0 fade show" role="alert" aria-live="assertive"
+            aria-atomic="true">
+            <div class="d-flex">
+                <div class="toast-body">
+                    {{ session('message_create') }}
+                </div>
+                <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"
+                    aria-label="Close"></button>
+            </div>
         </div>
     @endif
 
     {{-- avviso cancellazione project --}}
     @if (session('message_delete'))
-        <div class="alert alert-danger">
-            {{ session('message_delete') }}
-            <button type="button" class="btn-close" aria-label="Close"></button>
+        <div class="toast align-items-center text-bg-warning border-0 fade show" role="alert" aria-live="assertive"
+            aria-atomic="true">
+            <div class="d-flex">
+                <div class="toast-body">
+                    {{ session('message_delete') }}
+                </div>
+                <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"
+                    aria-label="Close"></button>
+            </div>
         </div>
     @endif
 
