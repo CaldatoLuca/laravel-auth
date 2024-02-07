@@ -6,6 +6,23 @@
 
 @section('content')
     <h2>Your project list</h2>
+
+    {{-- avviso creazione project --}}
+    @if (session('message_create'))
+        <div class="alert alert-success">
+            {{ session('message_create') }}
+            <button type="button" class="btn-close" aria-label="Close"></button>
+        </div>
+    @endif
+
+    {{-- avviso cancellazione project --}}
+    @if (session('message_delete'))
+        <div class="alert alert-danger">
+            {{ session('message_delete') }}
+            <button type="button" class="btn-close" aria-label="Close"></button>
+        </div>
+    @endif
+
     <table class="table">
         <thead>
             <tr>
