@@ -71,11 +71,12 @@ class ProjectController extends Controller
         //ho messo slug in guarded e lo gestisco io, salvo un nuovo slug cosi cambia se il titolo cambia
         $project->slug = Str::of($data['title'])->slug('-');
 
+        //aggiorna tutto tranne slug, ci ho pensato io
         $project->update($data);
 
-        $name = $project->title;
+        $project_title = $project->title;
 
-        return redirect()->route('admin.projects.show', $project)->with('message_update', "Project '$name' modified");;
+        return redirect()->route('admin.projects.show', $project)->with('message_update', "Project '$project_title' modified");;
     }
 
     /**
@@ -83,9 +84,9 @@ class ProjectController extends Controller
      */
     public function destroy(Project $project)
     {
-        $name = $project->title;
+        $project_title = $project->title;
         $project->delete();
 
-        return redirect()->route('admin.projects.index')->with('message_delete', "Project '$name' eliminated");
+        return redirect()->route('admin.projects.index')->with('message_delete', "Project '$project_title' eliminated");
     }
 }

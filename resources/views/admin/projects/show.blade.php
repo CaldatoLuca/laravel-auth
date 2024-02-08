@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('title')
-    {{ $project->title }}
+    - {{ $project->title }}
 @endsection
 
 @section('content')
