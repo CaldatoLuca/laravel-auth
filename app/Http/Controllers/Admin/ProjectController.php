@@ -68,6 +68,9 @@ class ProjectController extends Controller
     {
         $data = $request->validated();
 
+        //ho messo slug in guarded e lo gestisco io, salvo un nuovo slug cosi cambia se il titolo cambia
+        $project->slug = Str::of($data['title'])->slug('-');
+
         $project->update($data);
 
         $name = $project->title;

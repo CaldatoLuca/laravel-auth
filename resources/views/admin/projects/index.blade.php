@@ -73,18 +73,3 @@
         </table>
     </div>
 @endsection
-
-{{--
-    <form action="{{ route('admin.projects.destroy', $project) }}" method="POST">
-    @csrf
-
-   
-    @method('DELETE')
-
-    
-
-    <button type="submit" class="btn btn-delete"
-        onclick="return confirm('Are you sure you want to delete?')"><i
-            class="fa-solid fa-trash"></i></button>
-</form>
-    --}}
