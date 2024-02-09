@@ -5,15 +5,13 @@
 
 //Admin.blade
 #app {
-    height: 100vh;
+    background-color: $torquise;
     #admin-header {
         background-color: $black;
         height: $header-height;
     }
     .container-fluid {
-        height: calc(100vh - $header-height);
         #sidebar-menu {
-            background-color: $torquise;
             a {
                 color: $grey-light;
             }
@@ -23,6 +21,9 @@
         }
         main {
             background-color: $grey-light;
+        }
+        .main-height {
+            height: calc(100vh - $header-height);
         }
     }
     .notification {

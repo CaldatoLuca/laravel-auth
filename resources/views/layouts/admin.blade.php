@@ -54,7 +54,8 @@
         <div class="container-fluid">
             <div class="row h-100">
                 {{-- sidebar --}}
-                <nav id="sidebar-menu" class="col-md-3 col-lg-2 d-md-block navbar-dark sidebar collapse">
+                <nav id="sidebar-menu"
+                    class="col-md-3 col-lg-2 d-md-block navbar-dark sidebar collapse position-fixed ">
                     <div class="position-sticky pt-3">
                         <ul class="nav flex-column">
                             {{-- dashboard --}}
@@ -86,7 +87,8 @@
                 </nav>
 
                 {{-- main --}}
-                <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 pt-3">
+                <main
+                    class="col-md-9 ms-sm-auto col-lg-10 px-md-4 pt-3 {{ Route::currentRouteName() !== 'admin.projects.index' ? 'main-height' : '' }}">
                     @yield('content')
                 </main>
             </div>

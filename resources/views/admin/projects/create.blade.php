@@ -5,7 +5,7 @@
 @endsection
 
 @section('content')
-    <div class="container">
+    <div id="create" class="container">
         <h1 class="mb-5">New Project</h1>
 
         {{-- errori --}}
