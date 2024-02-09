@@ -23,7 +23,7 @@
     @vite(['resources/js/app.js'])
 </head>
 
-<body>
+<body id="admin">
     <div id="app">
 
         {{-- header --}}
