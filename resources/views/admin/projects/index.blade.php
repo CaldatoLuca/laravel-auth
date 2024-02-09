@@ -11,8 +11,11 @@
         <table class="table">
             <thead>
                 <tr>
+                    <th scope="col">ID</th>
                     <th scope="col">Title</th>
                     <th scope="col">Slug</th>
+                    <th scope="col" class="text-center">Thumb</th>
+                    <th scope="col" class="text-center">Description</th>
                     <th scope="col" class="text-center">View More</th>
                     <th scope="col" class="text-center">Edit</th>
                     <th scope="col" class="text-center">Delete</th>
@@ -21,16 +24,46 @@
             <tbody>
                 @foreach ($projects as $project)
                     <tr>
+                        {{-- id --}}
+                        <td>{{ $project->id }}</td>
+
+                        {{-- titolo --}}
                         <td>{{ $project->title }}</td>
+
+                        {{-- slug --}}
                         <td>{{ $project->slug }}</td>
+
+                        {{-- ha immagine? --}}
+                        <td class="text-center">
+                            @if ($project->thumb)
+                                <i class="fa-regular fa-square-check"></i>
+                            @else
+                                <i class="fa-solid fa-square-xmark"></i>
+                            @endif
+                        </td>
+
+                        {{-- ha descrizione? --}}
+                        <td class="text-center">
+                            @if ($project->description)
+                                <i class="fa-regular fa-square-check"></i>
+                            @else
+                                <i class="fa-solid fa-square-xmark"></i>
+                            @endif
+                        </td>
+
+                        {{-- show --}}
                         <td class="text-center">
                             <a href="{{ route('admin.projects.show', $project) }}" class="btn btn-details"><i
                                     class="fa-regular fa-square-plus"></i></a>
                         </td>
+
+                        {{-- edit --}}
                         <td class="text-center">
                             <a href="{{ route('admin.projects.edit', $project) }}" class="btn btn-edit"><i
                                     class="fa-solid fa-pen-to-square"></i></a>
                         </td>
+
+                        {{-- delete --}}
                         <td class="text-center">
                             <!-- Button trigger modal -->
                             <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#exampleModal">

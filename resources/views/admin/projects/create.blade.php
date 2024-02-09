@@ -12,7 +12,7 @@
         @include('partials.errors')
 
 
-        <form action="{{ route('admin.projects.store') }}" method="POST" class="h-100">
+        <form action="{{ route('admin.projects.store') }}" method="POST" class="h-100" enctype="multipart/form-data">
 
             {{-- token di laravel per controllo --}}
             @csrf
@@ -35,19 +35,15 @@
 
             {{-- url immagine --}}
             <div class="mb-3">
-                <label for="project-img" class="form-label">Project Image Url</label>
-                <div class="input-group">
-
-                    {{-- input --}}
-                    <input type="text" class="form-control @error('thumb') is-invalid @enderror" id="project-img"
-                        aria-describedby="basic-addon3 basic-addon4" name="thumb" value="{{ old('thumb') }}">
-                </div>
+                <label for="project-img" class="form-label">Upload image</label>
+                {{-- input --}}
+                <input class="form-control @error('thumb') is-invalid @enderror" type="file" id="project-img"
+                    name="thumb" value="{{ old('thumb') }}">
 
                 {{-- errore url immagine --}}
                 @error('thumb')
                     <div class="alert alert-danger">{{ $message }}</div>
                 @enderror
-                <div class="form-text" id="basic-addon4">Insert all the url</div>
             </div>
 
             {{-- descrizione --}}

@@ -7,6 +7,7 @@ use App\Http\Requests\StoreProjectRequest;
 use App\Http\Requests\UpdateProjectRequest;
 use App\Models\Project;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
 
@@ -38,8 +39,15 @@ class ProjectController extends Controller
         $data = $request->validated();
 
         $project = new Project();
+
         $project->fill($data);
+        //gestisco io slug e immagine - messi in guardede nel model
+        //slug diventa il titolo sluggato
+        //thumb salva il dato che prende dal server, lo salva in uploads e restituisce la path
         $project->slug = Str::of($project->title)->slug('-');
+        if (isset($data['thumb'])) {
+            $project->thumb = Storage::put('uploads', $data['thumb']);
+        }
         $project->save();
 
         return redirect()->route('admin.projects.index')->with('message_create', "Project '$project->title' created");
@@ -71,6 +79,15 @@ class ProjectController extends Controller
         //ho messo slug in guarded e lo gestisco io, salvo un nuovo slug cosi cambia se il titolo cambia
         $project->slug = Str::of($data['title'])->slug('-');
 
+        //gestisco i casi in cui ho img e ne carico una diversa
+        if (array_key_exists('thumb', $data)) {
+            if ($project->thumb) {
+                //cancella l'immagine vecchia
+                Storage::delete($project->thumb);
+            }
+            $project->thumb = Storage::put('uploads', $data['thumb']);
+        }
+
         //aggiorna tutto tranne slug, ci ho pensato io
         $project->update($data);
 
@@ -85,6 +102,12 @@ class ProjectController extends Controller
     public function destroy(Project $project)
     {
         $project_title = $project->title;
+
+        //cancello immagine se c'è
+        if ($project->thumb) {
+            Storage::delete($project->thumb);
+        }
+
         $project->delete();
 
         return redirect()->route('admin.projects.index')->with('message_delete', "Project '$project_title' eliminated");

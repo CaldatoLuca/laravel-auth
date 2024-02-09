@@ -12,7 +12,8 @@
         @include('partials.errors')
 
 
-        <form action="{{ route('admin.projects.update', $project) }}" method="POST" class="h-100">
+        <form action="{{ route('admin.projects.update', $project) }}" method="POST" class="h-100"
+            enctype="multipart/form-data">
 
             {{-- token di laravel per controllo --}}
             @csrf
@@ -37,23 +38,20 @@
                 @enderror
             </div>
 
-            {{-- url immagine --}}
+            {{--  immagine --}}
             <div class="mb-3">
-                <label for="project-img" class="form-label">Project Image Url</label>
-                <div class="input-group">
-
-                    {{-- input --}}
-                    <input type="text" class="form-control @error('thumb') is-invalid @enderror" id="project-img"
-                        aria-describedby="basic-addon3 basic-addon4" name="thumb"
-                        value="{{ old('thumb', $project->thumb) }}">
-                </div>
-
-                {{-- errore url immagine --}}
-                @error('thumb')
-                    <div class="alert alert-danger">{{ $message }}</div>
-                @enderror
-                <div class="form-text" id="basic-addon4">Insert all the url</div>
+                <label for="project-img" class="form-label">Upload image</label>
+                {{-- input --}}
+                <input class="form-control @error('thumb') is-invalid @enderror" type="file" id="project-img"
+                    name="thumb" value="{{ old('thumb') }} value="{{ old('thumb', $project->thumb) }}">
             </div>
+
+            {{-- errore url immagine --}}
+            @error('thumb')
+                <div class="alert alert-danger">{{ $message }}</div>
+            @enderror
+            <div class="form-text" id="basic-addon4">Insert all the url</div>
+
 
             {{-- descrizione --}}
             <div class="mb-3">
@@ -72,5 +70,8 @@
             {{-- bottone di invio --}}
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>
+
+        <img src="{{ asset('storage/' . $project->thumb) }}" alt="{{ $project->slug }}" class="img-fluid">
+
     </div>
 @endsection
