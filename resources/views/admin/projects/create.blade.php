@@ -9,7 +9,7 @@
         <h1 class="mb-5">New Project</h1>
 
         {{-- errori --}}
-        @include('partials.errors')
+        {{-- @include('partials.errors') --}}
 
 
         <form action="{{ route('admin.projects.store') }}" method="POST" class="h-100" enctype="multipart/form-data">
@@ -23,8 +23,9 @@
                 <div class="input-group">
 
                     {{-- input --}}
-                    <input type="text" class="form-control @error('title') is-invalid @enderror" id="project-title"
-                        aria-describedby="basic-addon3 basic-addon4" name="title" value="{{ old('title') }}" required>
+                    <input type="text" class="my-input form-control @error('title') is-invalid @enderror"
+                        id="project-title" aria-describedby="basic-addon3 basic-addon4" name="title"
+                        value="{{ old('title') }}" required>
                 </div>
 
                 {{-- errore titolo --}}
@@ -35,7 +36,7 @@
 
             {{-- url immagine --}}
             <div class="mb-3">
-                <label for="project-img" class="form-label">Upload image</label>
+                <label for="project-img" class="my-input form-label">Upload image</label>
                 {{-- input --}}
                 <input class="form-control @error('thumb') is-invalid @enderror" type="file" id="project-img"
                     name="thumb" value="{{ old('thumb') }}">
@@ -51,7 +52,7 @@
                 <label for="project-description" class="form-label">Project Description</label>
                 <div class="input-group">
                     {{-- input --}}
-                    <textarea class="form-control @error('description') is-invalid @enderror" cols="30" rows="10"
+                    <textarea class="my-input form-control @error('description') is-invalid @enderror" cols="30" rows="10"
                         id="project-description" aria-label="With textarea" name="description">{{ old('description') }}</textarea>
                 </div>
                 {{-- errore descrizione --}}
@@ -61,7 +62,7 @@
             </div>
 
             {{-- bottone di invio --}}
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="submit" class="btn btn-form">Submit</button>
         </form>
     </div>
 @endsection
