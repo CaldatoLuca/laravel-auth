@@ -150,4 +150,12 @@
         <script src="{{ asset('js/image_preview.js') }}"></script>
     @endif
 
+    @if (Route::currentRouteName() == 'admin.projects.edit')
+        <script src="{{ asset('js/image_edit.js') }}"></script>
+    @endif
+
+    @if (Route::currentRouteName() == 'admin.projects.edit' || Route::currentRouteName() == 'admin.projects.create')
+        <script src="{{ asset('js/remove_image.js') }}"></script>
+    @endif
+
 </html>

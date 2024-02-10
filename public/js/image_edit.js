@@ -2,8 +2,6 @@
 let imageElement = document.querySelector(".upload-image");
 let imagePreview = document.querySelector(".image-preview");
 let hasImage = document.querySelector(".has-image");
-hasImage.innerHTML = "No Image Selected";
-imagePreview.innerHTML = '<i class="fa-solid fa-x"></i>';
 
 //funzione al change del valore del type input
 imageElement.addEventListener("change", function () {

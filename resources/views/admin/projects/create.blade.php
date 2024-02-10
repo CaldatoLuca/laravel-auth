@@ -60,8 +60,14 @@
                             <div class="mb-3">
                                 <label for="project-img" class="form-label">Upload image</label>
                                 {{-- input --}}
-                                <input id="upload-image" class="my-input form-control @error('thumb') is-invalid @enderror"
-                                    type="file" id="project-img" name="thumb" value="{{ old('thumb') }}">
+                                <div class="input-group">
+                                    <input class="upload-image my-input form-control @error('thumb') is-invalid @enderror"
+                                        type="file" id="project-img" name="thumb" value="{{ old('thumb') }}">
+                                    {{-- remove image --}}
+                                    <button class="btn btn-form remove-image" type="button" id="button-addon2">
+                                        <i class="fa-solid fa-trash"></i>
+                                    </button>
+                                </div>
 
                                 {{-- errore url immagine --}}
                                 @error('thumb')
@@ -73,8 +79,8 @@
                             <div class="d-flex justify-content-center align-items-center flex-column">
 
                                 <div class="mb-2 has-image"></div>
-                                <div id="image-preview"
-                                    class="image-placeholder d-flex justify-content-center align-items-center rounded-2 bg-danger">
+                                <div
+                                    class="image-preview image-placeholder d-flex justify-content-center align-items-center rounded-2 bg-danger">
 
                                 </div>
                             </div>

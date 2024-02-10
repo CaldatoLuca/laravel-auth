@@ -63,9 +63,14 @@
                             <div class="mb-3">
                                 <label for="project-img-edit" class="form-label">Upload image</label>
                                 {{-- input --}}
-                                <input class="my-input form-control @error('thumb') is-invalid @enderror" type="file"
-                                    id="project-img-edit" name="thumb"
-                                    value="{{ old('thumb') }} value="{{ old('thumb', $project->thumb) }}">
+                                <div class="input-group">
+                                    <input class="upload-image my-input form-control @error('thumb') is-invalid @enderror"
+                                        type="file" id="project-img-edit" name="thumb">
+                                    {{-- remove image --}}
+                                    <button class="btn btn-form remove-image" type="button" id="button-addon2">
+                                        <i class="fa-solid fa-trash"></i>
+                                    </button>
+                                </div>
                             </div>
                             {{-- errore url immagine --}}
                             @error('thumb')
@@ -75,11 +80,20 @@
                             {{-- mostro  l'immagine del progetto se esiste, altrimenti una placeholder --}}
                             <div class="d-flex justify-content-center align-items-center flex-column">
 
-                                <div class="mb-2">Image Preview</div>
-                                <div class="image-show d-flex justify-content-center align-items-center ">
-                                    <img class="image rounded-2 " src="{{ asset('storage/' . $project->thumb) }}"
-                                        alt="{{ $project->slug }}">
-                                </div>
+
+                                @if ($project->thumb)
+                                    <div class="mb-2 has-image">Image Preview</div>
+                                    <div class="image-preview image-show d-flex justify-content-center align-items-center ">
+                                        <img class="image rounded-2 " src="{{ asset('storage/' . $project->thumb) }}"
+                                            alt="{{ $project->slug }}">
+                                    </div>
+                                @else
+                                    <div class="mb-2 has-image">No Image Selected</div>
+                                    <div
+                                        class="image-preview image-placeholder rounded-2 bg-danger d-flex justify-content-center align-items-center ">
+                                        <i class="fa-solid fa-x"></i>
+                                    </div>
+                                @endif
                             </div>
                         </div>
                     </div>
