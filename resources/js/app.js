@@ -6,4 +6,3 @@ import.meta.glob(["../img/**"]);
 
 //funzionalità
 import "./functionality/scroll_btn";
-import "./functionality/image_preview";

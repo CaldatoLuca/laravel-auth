@@ -146,5 +146,8 @@
         </button>
     </div>
 
+    @if (Route::currentRouteName() == 'admin.projects.create')
+        <script src="{{ asset('js/image_preview.js') }}"></script>
+    @endif
 
 </html>
