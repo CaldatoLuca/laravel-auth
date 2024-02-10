@@ -71,18 +71,12 @@
 
                             {{-- mostro  l'immagine del progetto se esiste, altrimenti una placeholder --}}
                             <div class="d-flex justify-content-center align-items-center flex-column">
-                                @if (0 == 0)
-                                    <div class="mb-2">Selected Image</div>
-                                    <div id="image-preview" class="rounded-2 overflow-hidden image-show">
-                                        <img src="" alt="">
-                                    </div>
-                                @else
-                                    <div class="mb-2">No Image Selected</div>
-                                    <div
-                                        class="image-placeholder d-flex justify-content-center align-items-center rounded-2 bg-danger">
-                                        <i class="fa-solid fa-x"></i>
-                                    </div>
-                                @endif
+
+                                <div class="mb-2 has-image"></div>
+                                <div id="image-preview"
+                                    class="image-placeholder d-flex justify-content-center align-items-center rounded-2 bg-danger">
+
+                                </div>
                             </div>
                         </div>
 
