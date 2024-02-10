@@ -60,8 +60,8 @@
                             <div class="mb-3">
                                 <label for="project-img" class="form-label">Upload image</label>
                                 {{-- input --}}
-                                <input class="my-input form-control @error('thumb') is-invalid @enderror" type="file"
-                                    id="project-img" name="thumb" value="{{ old('thumb') }}">
+                                <input id="upload-image" class="my-input form-control @error('thumb') is-invalid @enderror"
+                                    type="file" id="project-img" name="thumb" value="{{ old('thumb') }}">
 
                                 {{-- errore url immagine --}}
                                 @error('thumb')
@@ -71,9 +71,9 @@
 
                             {{-- mostro  l'immagine del progetto se esiste, altrimenti una placeholder --}}
                             <div class="d-flex justify-content-center align-items-center flex-column">
-                                @if (1 == 0)
+                                @if (0 == 0)
                                     <div class="mb-2">Selected Image</div>
-                                    <div class="rounded-2 overflow-hidden image-show">
+                                    <div id="image-preview" class="rounded-2 overflow-hidden image-show">
                                         <img src="" alt="">
                                     </div>
                                 @else
