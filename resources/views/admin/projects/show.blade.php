@@ -17,8 +17,6 @@
                     <h3>Description:</h3>
                     <div class="mb-3">{{ $project->description }}</div>
                 </div>
-
-
             </div>
 
             {{-- immagine --}}

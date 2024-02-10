@@ -57,3 +57,27 @@
         color: $black-light;
     }
 }
+
+//Index.create
+
+#create {
+    .image-show {
+        width: 100%;
+
+        img {
+            width: 70%;
+            height: 255px;
+            object-fit: cover;
+        }
+    }
+    .image-placeholder {
+        width: 70%;
+        height: 255px;
+        background-color: $torquise;
+        color: $grey-light;
+
+        .fa-x {
+            font-size: 6.25rem;
+        }
+    }
+}
