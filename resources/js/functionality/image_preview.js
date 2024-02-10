@@ -40,7 +40,8 @@ imageElement.addEventListener("change", function () {
         imagePreview.classList.add(
             "image-placeholder",
             "align-items-center",
-            "bg-danger"
+            "bg-danger",
+            "rounded-2"
         );
     }
 });
