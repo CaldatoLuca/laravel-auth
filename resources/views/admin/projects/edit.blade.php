@@ -24,7 +24,13 @@
                         <div class="col-6">
                             {{-- titolo --}}
                             <div class="mb-3">
-                                <label for="project-title" class="form-label">Title</label>
+                                <label for="project-title" class="form-label d-flex justify-content-between ">
+                                    Title
+                                    {{-- errore titolo --}}
+                                    @error('title')
+                                        <div class="text-danger">{{ $message }}</div>
+                                    @enderror
+                                </label>
                                 <div class="input-group">
 
                                     {{-- input --}}
@@ -32,26 +38,23 @@
                                         id="project-title" aria-describedby="basic-addon3 basic-addon4" name="title"
                                         value="{{ old('title', $project->title) }}" required>
                                 </div>
-
-                                {{-- errore titolo --}}
-                                @error('title')
-                                    <div class="alert alert-danger">{{ $message }}</div>
-                                @enderror
                             </div>
 
                             {{-- descrizione --}}
                             <div class="mb-3">
 
-                                <label for="project-description" class="form-label">Description</label>
+                                <label for="project-description" class="form-label d-flex justify-content-between ">
+                                    Description
+                                    {{-- errore descrizione --}}
+                                    @error('description')
+                                        <div class="text-danger">{{ $message }}</div>
+                                    @enderror
+                                </label>
                                 <div class="input-group">
                                     {{-- input --}}
                                     <textarea class="my-input form-control @error('description') is-invalid @enderror" cols="30" rows="10"
                                         id="project-description" aria-label="With textarea" name="description">{{ old('description', $project->description) }}</textarea>
                                 </div>
-                                {{-- errore descrizione --}}
-                                @error('description')
-                                    <div class="alert alert-danger">{{ $message }}</div>
-                                @enderror
                             </div>
 
                             {{-- bottone di invio --}}
@@ -61,7 +64,13 @@
                         <div class="col-6">
                             {{--  immagine input --}}
                             <div class="mb-3">
-                                <label for="project-img-edit" class="form-label">Upload image</label>
+                                <label for="project-img-edit" class="form-label d-flex justify-content-between ">
+                                    Upload image
+                                    {{-- errore url immagine --}}
+                                    @error('thumb')
+                                        <div class="text-danger">{{ $message }}</div>
+                                    @enderror
+                                </label>
                                 {{-- input --}}
                                 <div class="input-group">
                                     <input class="upload-image my-input form-control @error('thumb') is-invalid @enderror"
@@ -72,10 +81,6 @@
                                     </button>
                                 </div>
                             </div>
-                            {{-- errore url immagine --}}
-                            @error('thumb')
-                                <div class="alert alert-danger">{{ $message }}</div>
-                            @enderror
 
                             {{-- mostro  l'immagine del progetto se esiste, altrimenti una placeholder --}}
                             <div class="d-flex justify-content-center align-items-center flex-column">

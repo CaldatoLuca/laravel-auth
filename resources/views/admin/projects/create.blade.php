@@ -22,7 +22,13 @@
                         <div class="col-6">
                             {{-- titolo --}}
                             <div class="mb-3">
-                                <label for="project-title" class="form-label">Project Title</label>
+                                <label for="project-title" class="form-label d-flex justify-content-between ">
+                                    Project Title
+                                    {{-- errore titolo --}}
+                                    @error('title')
+                                        <div class="text-danger">{{ $message }}</div>
+                                    @enderror
+                                </label>
                                 <div class="input-group">
 
                                     {{-- input --}}
@@ -31,24 +37,23 @@
                                         value="{{ old('title') }}" required>
                                 </div>
 
-                                {{-- errore titolo --}}
-                                @error('title')
-                                    <div class="alert alert-danger">{{ $message }}</div>
-                                @enderror
+
                             </div>
 
                             {{-- descrizione --}}
                             <div class="mb-3">
-                                <label for="project-description" class="form-label">Project Description</label>
+                                <label for="project-description" class="form-label d-flex justify-content-between ">
+                                    Project Description
+                                    {{-- errore descrizione --}}
+                                    @error('description')
+                                        <div class="text-danger">{{ $message }}</div>
+                                    @enderror
+                                </label>
                                 <div class="input-group">
                                     {{-- input --}}
                                     <textarea class="my-input form-control @error('description') is-invalid @enderror" cols="30" rows="10"
                                         id="project-description" aria-label="With textarea" name="description">{{ old('description') }}</textarea>
                                 </div>
-                                {{-- errore descrizione --}}
-                                @error('description')
-                                    <div class="alert alert-danger">{{ $message }}</div>
-                                @enderror
                             </div>
 
                             {{-- bottone di invio --}}
@@ -58,7 +63,13 @@
                         <div class="col-6">
                             {{--  immagine --}}
                             <div class="mb-3">
-                                <label for="project-img" class="form-label">Upload image</label>
+                                <label for="project-img" class="form-label d-flex justify-content-between ">
+                                    Upload image
+                                    {{-- errore url immagine --}}
+                                    @error('thumb')
+                                        <div class="text-danger">{{ $message }}</div>
+                                    @enderror
+                                </label>
                                 {{-- input --}}
                                 <div class="input-group">
                                     <input class="upload-image my-input form-control @error('thumb') is-invalid @enderror"
@@ -68,11 +79,6 @@
                                         <i class="fa-solid fa-trash"></i>
                                     </button>
                                 </div>
-
-                                {{-- errore url immagine --}}
-                                @error('thumb')
-                                    <div class="alert alert-danger">{{ $message }}</div>
-                                @enderror
                             </div>
 
                             {{-- mostro  l'immagine del progetto se esiste, altrimenti una placeholder --}}
